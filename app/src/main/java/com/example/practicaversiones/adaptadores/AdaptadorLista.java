@@ -21,7 +21,10 @@ public class AdaptadorLista extends BaseAdapter {
     public AdaptadorLista(ArrayList lista, Context context) {
         this.lista = lista;
         this.context = context;
+
     }
+
+
 
     @Override
     public int getCount() {
@@ -40,14 +43,24 @@ public class AdaptadorLista extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        HolderAdicional holder=null;
+
+       /* if (convertView==null){
+            convertView=LayoutInflater.from(context).inflate(R.layout.layout_lista, parent,false);
+        }
+        HolderAdicional holder=new HolderAdicional(convertView);
+        Version vers= (Version) this.getItem(position);
+        holder.getLogo().setImageResource(vers.getCabecera());
+        holder.getNombre().setText(vers.getNombre());
+
+        return convertView; */
+        HolderAdicional holder;
 
         if (convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.layout_lista,parent,false);
             holder=new HolderAdicional(convertView);
             convertView.setTag(holder);
-        } else{
-            holder= (HolderAdicional) convertView.getTag();
+        } else {
+            holder = (HolderAdicional) convertView.getTag();
 
             Version vers= (Version) lista.get(position);
             holder.getNombre().setText(vers.getNombre());
